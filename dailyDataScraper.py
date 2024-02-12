@@ -1,8 +1,10 @@
+from automation import Automation
 import requests
 from bs4 import BeautifulSoup
 
-URL = "https://www.accuweather.com/en/in/haldwani-cum-kathgodam/1-191344_1_al/weather-forecast/1-191344_1_al?city=haldwani"
-URL2 = "https://www.accuweather.com/en/in/haldwani-cum-kathgodam/1-191344_1_al/daily-weather-forecast/1-191344_1_al"
+automation = Automation()
+
+URL2 = automation.findDailyReportURL()
 
 req = requests.get(URL2, headers={'User-Agent':'Mozilla/5.0'})
 soup = BeautifulSoup(req.content, 'html.parser')
@@ -28,4 +30,3 @@ details = [
 ]
 
 print(details)
-
